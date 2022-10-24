@@ -14,13 +14,11 @@
                     case playerSelection === "rock" && computerSelection === "paper":
                     case playerSelection === "paper" && computerSelection === "scissors":
                     case playerSelection === "scissors" && computerSelection === "rock":
-                        return "Loss";
+                        return "Computer Wins";
                     case playerSelection === "rock" && computerSelection === "scissors":
                     case playerSelection === "paper" && computerSelection === "rock":
                     case playerSelection === "scissors" && computerSelection === "paper":
-                        return "Win";
-                    default:
-                        return "Invalid Input";
+                        return "You Win";
                 }
             }
 
@@ -38,10 +36,18 @@
             function game() {
                 let playerSelection;
                 let computerSelection;
+                let result;
                 for (let i = 1; i <= 5; i++) {
                     playerSelection = prompt("Round "+ i + " - Choose [Rock|Paper|Scissors] : ").toLowerCase();
                     computerSelection = getComputerChoice();
-                    console.log(playRound(playerSelection, computerSelection));
+                    result = playRound(playerSelection, computerSelection)
+                    if (result === undefined) {
+                        alert("Invalid input, try again.")
+                        i--
+                    } else {
+                        console.log("You play " + playerSelection + ", computer plays " + computerSelection + ". " + result);
+                    }
+                    
                 }
             }
 

@@ -6,6 +6,32 @@
     </head>
     <body>
         <h1>Game in console</h1>
-        <script></script>
+        <script>
+            function playRound(playerSelection, computerSelection) {
+                switch (true) {
+                    case playerSelection === computerSelection:
+                        return "Draw";
+                    case playerSelection === "rock" && computerSelection === "paper":
+                    case playerSelection === "paper" && computerSelection === "scissors":
+                    case playerSelection === "scissors" && computerSelection === "rock":
+                        return "Loss";
+                    case playerSelection === "rock" && computerSelection === "scissors":
+                    case playerSelection === "paper" && computerSelection === "rock":
+                    case playerSelection === "scissors" && computerSelection === "paper":
+                        return "Win";
+                    default:
+                        return "Invalid Input";
+                }
+                return;
+            }
+
+            function getComputerChoice() {
+                return "scissors";
+            }
+            
+            const playerSelection = "rock";
+            const computerSelection = getComputerChoice();
+            console.log(playRound(playerSelection, computerSelection));
+        </script>
     </body>
 </html>

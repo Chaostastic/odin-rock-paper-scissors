@@ -10,15 +10,15 @@
             function playRound(playerSelection, computerSelection) {
                 switch (true) {
                     case playerSelection === computerSelection:
-                        return "Draw";
+                        return "draw";
                     case playerSelection === "rock" && computerSelection === "paper":
                     case playerSelection === "paper" && computerSelection === "scissors":
                     case playerSelection === "scissors" && computerSelection === "rock":
-                        return "Computer Wins";
+                        return "loss";
                     case playerSelection === "rock" && computerSelection === "scissors":
                     case playerSelection === "paper" && computerSelection === "rock":
                     case playerSelection === "scissors" && computerSelection === "paper":
-                        return "You Win";
+                        return "win";
                 }
             }
 
@@ -37,18 +37,43 @@
                 let playerSelection;
                 let computerSelection;
                 let result;
+                let wins = 0;
+                let losses = 0;
+                let draws = 0;
                 for (let i = 1; i <= 5; i++) {
                     playerSelection = prompt("Round "+ i + " - Choose [Rock|Paper|Scissors] : ").toLowerCase();
                     computerSelection = getComputerChoice();
-                    result = playRound(playerSelection, computerSelection)
-                    if (result === undefined) {
-                        alert("Invalid input, try again.")
-                        i--
-                    } else {
-                        console.log("You play " + playerSelection + ", computer plays " + computerSelection + ". " + result);
+                    switch (playRound(playerSelection, computerSelection)) {
+                        case "win":
+                            wins++;
+                            result = "You win";
+                            break;
+                        case "loss":
+                            losses++;
+                            result = "Computer wins";
+                            break;
+                        case "draw":
+                            draws++;
+                            result = "Draw";
+                            break;
+                        default:
+                            alert("Invalid input, try again.");
+                            i--;
+                            continue;
                     }
-                    
+                    console.log("You play " + playerSelection + ", computer plays " + computerSelection + ". " + result);
                 }
+                switch (true) {
+                    case wins > losses:
+                        result = "You win!";
+                        break;
+                    case wins < losses:
+                        result = "Computer wins!";
+                        break;
+                    case wins === losses:
+                        result = "Draw!";
+                }
+                console.log(result + " Wins: " + wins + " Losses: " + losses + " Draws: " + draws);
             }
 
             game();

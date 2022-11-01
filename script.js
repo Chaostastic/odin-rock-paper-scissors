@@ -1,9 +1,10 @@
 
-let wins;
-let losses;
-let draws;
+const buttons = document.querySelectorAll("button")
+let wins = 0;
+let losses = 0;
+let draws = 0;
 
-function playRound(playerSelection, computerSelection) {
+function evaluate(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection === computerSelection:
             wins++;
@@ -37,25 +38,19 @@ function getGameResult() {
     }
 }
 
-function game() {
-    let playerSelection;
-    let computerSelection;
-    let result;
-    wins = 0;
-    losses = 0;
-    draws = 0;
-    for (let i = 1; i <= 5; i++) {
-        playerSelection = prompt("Round " + i + " - Choose [Rock|Paper|Scissors] : ").toLowerCase();
-        computerSelection = getComputerChoice();
-        result = (playRound(playerSelection, computerSelection))
-        if (result === undefined) {
-            alert("Invalid input, try again.");
-            i--;
-            continue;
-        }
-        console.log("You play " + playerSelection + ", computer plays " + computerSelection + ". " + result);
+function playRound(e) {
+    const playerSelection = this.id;
+    const computerSelection = getComputerChoice();
+    const result = (evaluate(playerSelection, computerSelection))
+    if (result === undefined) {
+        alert("Invalid input, try again.");
     }
-    console.log(getGameResult() + " Wins: " + wins + " Losses: " + losses + " Draws: " + draws);
+    console.log("You play " + playerSelection + ", computer plays " + computerSelection + ". " + result);
+    if (wins >= 5 || losses >= 5) {
+        console.log(getGameResult() + " Wins: " + wins + " Losses: " + losses + " Draws: " + draws);
+    }
 }
 
-game();
+buttons.forEach((button => button.addEventListener("click", playRound)))
+
+

@@ -3,11 +3,19 @@ body {
     background-color: rgb(2, 7, 17);
 }
 
+.counter {
+    margin-right: 32px;
+}
+
+.results,
 .choice-button {
     color: white;
-    font-weight: 600;
-    background-color: rgb(4, 13, 32);
     font-size: 32px;
+    font-weight: 600;
+}
+
+.choice-button {
+    background-color: rgb(4, 13, 32);
     margin: 16px;
     padding: 16px;
     border-color: rgb(59, 5, 59);

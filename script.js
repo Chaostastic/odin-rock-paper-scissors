@@ -7,6 +7,7 @@ let draws = 0;
 function playRound(e) {
     const playerSelection = this.id;
     evaluate(playerSelection, getComputerChoice());
+    updateCounters();
     if (wins >= 5 || losses >= 5) {
         endGame();
     }
@@ -18,6 +19,12 @@ function getComputerChoice() {
         case 1: return "paper";
         case 2: return "scissors";
     }
+}
+
+function updateCounters() {
+    document.querySelector(".wins").textContent = wins;
+    document.querySelector(".losses").textContent = losses;
+    document.querySelector(".draws").textContent = draws;
 }
 
 function evaluate(playerSelection, computerSelection) {

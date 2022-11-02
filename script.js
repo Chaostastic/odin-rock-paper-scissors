@@ -59,7 +59,7 @@ resetButton.addEventListener("click", resetGame)
 
 function endGame() {
     gameOver = true;
-    gameResults.textContent = getGameResult();
+    [gameResults.textContent, gameResults.style.color] = getGameResult();
     gameResultContainer.appendChild(gameResults);
     resetButtonContainer.appendChild(resetButton);
 }
@@ -76,8 +76,8 @@ function resetGame() {
 
 function getGameResult() {
     switch (true) {
-        case wins > losses: return "You win!";
-        case wins < losses: return "Computer wins!";
-        case wins === losses: return "Draw!";
+        case wins > losses: return ["You win!", "green"];
+        case wins < losses: return ["Computer wins!", "red"];
+        case wins === losses: return ["Draw!", "orage"];
     }
 }

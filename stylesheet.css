@@ -7,13 +7,23 @@ body {
     margin-right: 32px;
 }
 
+
+.game-result {
+    margin: 32px;
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+}
+
 .results,
+.reset-button,
 .choice-button {
     color: white;
     font-size: 32px;
     font-weight: 600;
 }
 
+.reset-button,
 .choice-button {
     background-color: rgb(4, 13, 32);
     margin: 16px;

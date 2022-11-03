@@ -78,6 +78,6 @@ function getGameResult() {
     switch (true) {
         case wins > losses: return ["You win!", "green"];
         case wins < losses: return ["Computer wins!", "red"];
-        case wins === losses: return ["Draw!", "orage"];
+        // case wins === losses: return ["Draw!", "orange"];
     }
 }

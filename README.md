@@ -28,3 +28,5 @@ Learned from this project:
    - Creating branches
    - Merging branches
    - Deleting branches
+
+- display: none

@@ -5,6 +5,10 @@ let draws = 0
 
 const CHOICES = ["rock", "paper", "scissors"]
 
+const buttons = document.querySelectorAll(".choice-button")
+const gameResults = document.querySelector(".game-result")
+const resetButton = document.querySelector(".reset-button")
+
 function playRound(event) {
     if (gameOver) return
     const playerSelection = event.target.id
@@ -40,10 +44,10 @@ function updateCounters() {
 }
 
 function endGame() {
-    gameOver = true
+    gameOver = true;
     [gameResults.textContent, gameResults.style.color] = getGameResult()
-    gameResultContainer.appendChild(gameResults)
-    resetButtonContainer.appendChild(resetButton)
+    gameResults.classList.remove("none")
+    resetButton.classList.remove("none")
 }
 
 function resetGame() {
@@ -51,8 +55,8 @@ function resetGame() {
     losses = 0
     draws = 0
     updateCounters()
-    gameResultContainer.removeChild(gameResults)
-    resetButtonContainer.removeChild(resetButton)
+    gameResults.classList.add("none")
+    resetButton.classList.add("none")
     gameOver = false
 }
 
@@ -64,15 +68,5 @@ function getGameResult() {
     }
 }
 
-const buttons = document.querySelectorAll(".choice-button")
 buttons.forEach((button => button.addEventListener("click", playRound)))
-
-const gameResultContainer = document.querySelector(".game-result-container")
-const gameResults = document.createElement("div")
-gameResults.classList.add("game-result")
-
-const resetButtonContainer = document.querySelector(".reset-button-container")
-const resetButton = document.createElement("button")
-resetButton.classList.add("reset-button")
-resetButton.textContent = "Reset Game"
 resetButton.addEventListener("click", resetGame)
